@@ -1,0 +1,58 @@
+-- 주석
+
+-- 여러 블록 지정 : Alt + X
+-- 한줄 실행 : Alt + S (그 줄에 커서 놓고)
+
+-- 테이블 생성
+create table product (
+	p_name varchar2(10 char),
+	p_price number(4)
+);
+
+-- 데이터 삽입
+insert into product values('볼펜', 1000);
+
+-- 데이터 조회
+select * from PRODUCT;
+
+-------------------------------------------
+
+-- 행, row,  행 하나가 데이터 1개. record라고 함.
+-- 열, filed, 속성, colum
+
+-- oracle 대/소문자 구분x 다 대문자
+
+-- DBA : 서버 전원관리, 백업/복구, 계정관리 
+
+-- DBP : CRUD (우리의 목표) (Create Read Update Delete)
+
+-- SQL (Structured Query Language) : DB를 제어하는 언어
+
+-- 문장끝에 세미클론(;)
+
+--------------------------------------------
+
+-- 1) 테이블 만들기
+create table student (
+	s_name varchar2(30 char),
+	s_age number(3),
+	s_kor number(3),
+	s_eng number(3),
+	s_jp number(3)
+);
+
+-- 2) 데이터 넣기
+insert into student values('준석', 25, 99, 95, 100);
+
+-- 2-1) 원하는 칼럼의 데이터 넣기
+insert into student(s_name, s_age) values('솔리', 28);
+
+-- 2-2) 칼럼 순서 섞어서 데이터 넣기 
+insert into student(s_kor, s_jp, s_eng, s_age, s_name)
+values (95, 85, 93, 25, '기훈');
+
+-- 3) 조회
+select * from student
+
+-- 4) 데이터 삭제 
+-- drop table student cascade constraint purge;
