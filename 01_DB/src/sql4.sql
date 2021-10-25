@@ -47,6 +47,97 @@ where s_name = '다이제';
 
 
 
+-- ###################### WHERE #############################
+
+select s_name, s_price
+from SNACK
+where s_maker = '농심';
+
+-- 농심 과자의 평균 가격
+select avg(s_price)
+from snack
+where s_maker = '농심';
+
+-- 먹으면 안되는 과자의 이름, 가격
+select * from snack where s_exp < sysdate;
+
+-- '%ㅋ' : ㅋ로 끝나는 거
+-- 'ㅋ%' : ㅋ로 시작하는 거
+-- '%ㅋ%' : ㅋ가 포함된 거
+
+-- ~깡 으로 끝나는 시리즈 과자 이름, 가격
+select s_name, s_price
+from SNACK
+where s_name like '%깡';
+
+
+-- test
+-- 빼빼로 시리즈 과자 이름, 가격
+select s_name, s_price
+from snack
+where s_name like '%빼빼로%';
+
+-- 깡 시리즈 중 최고가
+select avg(s_price)
+from snack
+where s_name like '%깡';
+
+-- 제일 비싼 과자 (이름, 제조, 가격)
+select s_name, s_maker, s_price
+from SNACK
+where s_price = max(s_price);
+
+-- subQuery ( 쿼리 속 쿼리 )
+
+-- 제일 비싼
+select max(s_price)
+from SNACK
+
+-- 젤 비싼 과자 (이름, 메이커, 가격)
+select s_name, s_maker, s_price
+from snack
+where s_price = (
+	select max(s_price)
+	from SNACK
+	);
+
+
+	
+
+-- test 2 ( subQuery )
+-- 평균 값보다 비싼 과자의 이름 가격
+select s_name, s_price
+from snack
+where s_price > (
+	select avg(s_price)
+	from snack
+	);
+
+-- 평균 값
+select avg(s_price)
+from SNACK
+
+
+
+
+-- test3 ( subQuery )
+-- 제일 가벼운 과자의 이름과 가격
+select s_name, s_price
+from snack
+where s_weight = (
+	select min(s_weight)
+	from snack
+	);
+
+-- 제일 무거운 과자의 이름과 가격
+select s_name, s_price
+from snack
+where s_weight = (
+	select max(s_weight)
+	from snack
+	);
+
+
 
 
 

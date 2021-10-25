@@ -18,12 +18,17 @@ create table snack(
 create sequence snack_seq;
 
 insert into snack values (snack_seq.nextval, '¾çÆÄ¸µ', '³ó½É', 60, 1000, sysdate);
-insert into snack values (snack_seq.nextval, '²É°Ô¶û', '·Ôµ¥', 50, 1100, sysdate);
+insert into snack values (snack_seq.nextval, '²É°Ô¶û', '·Ôµ¥', 20, 1100, sysdate);
+insert into snack values (snack_seq.nextval, '°¨ÀÚ±ø', '·Ôµ¥', 50, 1100, sysdate);
 
 insert into snack values (2, '¾çÆÄ¸µ', '³ó½É', 60, 1000, sysdate);
 
 insert into snack values (snack_seq.nextval, '´ÙÀÌÁ¦', '¿À¸®¿Â', 50, 1300, sysdate);
 insert into snack values (snack_seq.nextval, '°í·¡¹ä', 'ÇØÅÂ', 50, 1600, sysdate);
+
+insert into snack values (snack_seq.nextval, '·Ôµ¥»©»©·Î', 'ÇØÅÂ', 50, 1300, sysdate);
+insert into snack values (snack_seq.nextval, '´©µå»©»©·Î', 'ÇØÅÂ', 50, 1400, sysdate);
+
 
 select * from snack;
 
