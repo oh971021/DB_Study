@@ -1,0 +1,15 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DB {
+	public static void main(String[] args) throws ClassNotFoundException {
+		
+	// 1. Driver load
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		
+	// 2. Connect
+		Connection con = DriverManager.getConnection(jdbc:oracle:thin:@localhost:1521:xe, c##ojs, ojs);
+		
+		
+	}
+}

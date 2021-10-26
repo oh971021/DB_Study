@@ -1,0 +1,8 @@
+create table snack(
+	s_no number(3) primary key, 
+	s_name varchar2(20 char) not null
+	s_maker varchar2(20 char) not null
+	s_weight number(4,1) not null -- 전체 4자릿수의 소수점 1자리의 실수 생성
+	s_price 
+	s_exp
+);

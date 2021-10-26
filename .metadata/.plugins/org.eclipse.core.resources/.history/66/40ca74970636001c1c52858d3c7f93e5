@@ -1,0 +1,36 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DB {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+	// 1. Driver load (DB 드라이버 불러옴)
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id = "c##ojs";
+		String pw = "ojs";
+		
+	// 2. Connect (DB와 연결)
+		Connection con = DriverManager.getConnection(url, id, pw);
+		System.out.println("연결 성공");
+		
+	// 3. Statement (실행도구 생성)
+		Statement st = con.createStatement();
+		
+	// 4. ResultSet (결과 얻기)
+		String sql = "select * from db_test where d_name ='병관'";
+		ResultSet rs = st.executeQuery(sql); // select 한 DB 테이블이 통째로 rs에 들어가 있다.
+		
+		if (rs.next()) { // 1행을 가르키게 된다.
+		String name = rs.getString("d_name");
+		System.out.print(name);
+		
+		int age = rs.getInt("d_age");
+		System.out.println(age);
+		}
+	}
+}

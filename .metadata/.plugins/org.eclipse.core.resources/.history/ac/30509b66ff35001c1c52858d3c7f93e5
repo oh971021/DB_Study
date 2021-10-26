@@ -1,0 +1,27 @@
+
+## Java 로 DB 를 제어할 때 사용하는 친구들
+
+- Connection
+- Statment
+- ResultSet
+
+
+1. Driver를 로드 (객체화)
+- Class.forName("oracle.jdbc.driver.OracleDriver");
+	: 클래스의 드라이버 이름을 부르는 메소드를 사용해서 DB 드라이버를 가져온다.
+
+
+########### 여기서부터가 Java랑 DB를 연결하고, 사용하는 구문 ############
+
+2. 연결 객체 얻기
+- Connection con = DriverManager.getConnection(
+	url = jdbc:oracle:thin:@localhost:1521:xe, id, pw);
+	:  연결 객체를 가져오려면 이렇게 사용함. ()안의 내용은 DB 연결 정보.
+	
+3. 실행 도구를 생성
+- Statement st = con.createStatement();
+	: DB를 실행 시켜주는 도구.
+	
+4. 결과를 얻기
+- ReseultSet rs = st.executeQuery(sql);
+	: ()안의 내용은 SQL문이 들어간다.

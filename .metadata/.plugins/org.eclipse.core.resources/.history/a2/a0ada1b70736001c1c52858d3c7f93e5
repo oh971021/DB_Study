@@ -1,0 +1,10 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DB2 {
+	public static void main(String[] args) {
+		// ²®µ¥±â con, st, rs
+		
+		Connection con = DriverManager.getConnection(null, null, null);
+	}
+}
