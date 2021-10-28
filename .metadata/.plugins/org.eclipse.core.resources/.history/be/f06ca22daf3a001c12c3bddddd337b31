@@ -1,0 +1,31 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class BMIMain {
+	public static void main(String[] args) throws SQLException {
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String sql = "INSERT INTO BMI VALUES (BMI_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
+		
+		// 껍데기 3녀석 만들기
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		
+		System.out.print("이름 : ");
+		System.out.print("체중 : ");
+		System.out.print("키 : ");
+		
+		// 테이블 - 
+		// 번호, 이름, 체중, 키, BMI(소수점 2자리), 결과
+		
+		
+		
+		pstmt.close();
+		con.close();
+		
+		
+	}
+}

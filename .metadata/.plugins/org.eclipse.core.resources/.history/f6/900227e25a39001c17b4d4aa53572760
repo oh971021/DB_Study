@@ -1,0 +1,44 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class SelectMain {
+	public static void main(String[] args) throws SQLException {
+		
+		Scanner k = new Scanner(System.in);
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String sql = "SELECT * FROM DB_TEST";
+		
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		System.out.println("연결 성공!");
+		
+		// 데이터 조회
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		
+//		System.out.println("누구를 찾으실래요?");
+//		String name = k.next();
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			System.out.println(rs.getString("d_name"));
+			System.out.println(rs.getInt("d_age"));
+			System.out.println("=====");
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		con.close();
+		
+	}
+}

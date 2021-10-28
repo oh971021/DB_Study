@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;UpdateMain.java&apos; to &apos;UpdateMain.java&apos;&#x0D;&#x0A;- Original project: &apos;05_JDBC_CRUD&apos;&#x0D;&#x0A;- Destination element: &apos;UpdateMain.java&apos;&#x0D;&#x0A;- Original element: &apos;UpdateMain.java&apos;" description="Copy compilation unit" destination="/src&lt;{UpdateMain.java" element1="/src&lt;{UpdateMain.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1635739686139" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,26 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class InsertMain {
+	public static void main(String[] args) throws SQLException {
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String sql = "INSERT INTO DB_TEST VALUES (DB_TEST_SEQ.NEXTVAL, ?, ?)";
+		
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		System.out.println("연결 성공!");
+		
+		// 데이터 생성
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, name);
+		pstmt.setInt(2, age);
+		
+		
+		
+		
+		con.close();
+		
+	}
+}

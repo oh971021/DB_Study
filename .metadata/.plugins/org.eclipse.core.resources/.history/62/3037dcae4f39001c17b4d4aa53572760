@@ -1,0 +1,22 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBMain {
+	public static void main(String[] args) throws SQLException {
+		
+		// DB 관련 작업
+		// 1. 연결
+		// : Maven Project로 연결
+		
+		// 2. 껍데기
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		System.out.println("연결 성공!");
+		
+		// CRUD - c : 자바로 테이블에 값 넣기
+		
+		
+	}
+}

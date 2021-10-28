@@ -1,0 +1,52 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class BMIMain {
+	public static void main(String[] args) throws SQLException {
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String sql = "INSERT INTO BMI VALUES (BMI_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
+		Scanner k = new Scanner(System.in);
+		
+		// 테이블 - BMI 
+				// 번호, 이름, 체중, 키, BMI(소수점 2자리), 결과
+				
+		
+		// 껍데기 3녀석 만들기
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		
+		// 입력 받는 칸
+		System.out.print("이름 : ");
+		String name = k.next(); 
+		System.out.print("체중 : ");
+		int weight = k.nextInt();
+		System.out.print("키 : ");
+		int height = k.nextInt();
+		double bmi;
+		String result = "";
+		
+		// BMI 계산식
+		bmi = weight / (height * height);
+		
+		if(bmi < 20) {
+			result = "저체중";
+		}else if(bmi < 25)   {
+			result = "정상";
+		}else if(bmi < 30)  {
+			result = "과체중";
+		}
+		
+		
+		
+		
+		pstmt.close();
+		con.close();
+		
+		
+	}
+}

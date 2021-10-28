@@ -1,0 +1,9 @@
+create table BMI (
+	b_no number (2) primary key,
+	b_name varchar (10 char) not null,
+	b_weight number (3) not null,
+	b_height number (4) not null,
+	b_bmi number (3,2) not null,
+	b_result varchar (3 char) not null
+);
+

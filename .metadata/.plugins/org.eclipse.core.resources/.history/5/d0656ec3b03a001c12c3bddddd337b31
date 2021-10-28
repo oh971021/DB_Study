@@ -1,0 +1,78 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class BMIMain {
+	public static void main(String[] args) throws SQLException {
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String sql = "INSERT INTO BMI VALUES (BMI_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
+		Scanner k = new Scanner(System.in);
+		
+		// 테이블 - BMI 
+				// 번호, 이름, 체중, 키, BMI(소수점 2자리), 결과
+				
+		
+		// 껍데기 3녀석 만들기
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		
+		// 입력 받는 칸
+		System.out.print("이름 : ");
+		String name = k.next(); 
+		System.out.print("체중 : ");
+		double weight = k.nextInt();
+		System.out.print("키 : ");
+		double height = k.nextInt();
+		double bmi;
+		
+		// BMI 계산식
+		if(height > 3) {
+			height /= 100;
+		}
+		
+		String result = "비만";
+		
+		bmi = weight / (height * height);
+		
+		if(bmi < 20) {
+			result = "저체중";
+		}else if(bmi < 25)   {
+			result = "정상";
+		}else if(bmi < 30)  {
+			result = "과체중";
+		}
+		
+		// 데이터 작성
+		pstmt.setString(1, name);
+		pstmt.setDouble(2, weight);
+		pstmt.setDouble(3, height);
+		pstmt.setDouble(4, bmi);
+		pstmt.setString(5, result);
+		
+		// 데이터 삽입
+		int row = pstmt.executeUpdate();
+		
+		if (row == 1) {
+			System.out.println("등록 성공!");
+		} else {
+			System.out.println("다시 입력해주세요!");
+		}
+		
+		
+		// 들어간 데이터 확인
+		System.out.printf("BMI 수치 : %.2f\n", bmi);
+		System.out.printf("%s님, 당신은 %s입니다\n", name, result);
+		
+		
+		
+		
+		pstmt.close();
+		con.close();
+		
+		
+	}
+}

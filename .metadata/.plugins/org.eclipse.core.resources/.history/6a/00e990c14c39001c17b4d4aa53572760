@@ -1,0 +1,57 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Test {
+	public static void main(String[] args) throws SQLException {
+		
+		// 스낵테이블에 있는거 전체 출력
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id = "c##ojs";
+		String pw = "ojs";
+		
+		Connection con = DriverManager.getConnection(url, id, pw);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

@@ -1,0 +1,20 @@
+create table BMI (
+	b_no number (2) primary key,
+	b_name varchar2 (20 char) not null,
+	b_weight number (10, 2) not null,
+	b_height number (10, 2) not null,
+	b_bmi number (10, 2) not null,
+	b_result varchar2 (20 char) not null
+);
+
+create sequence bmi_seq;
+create sequence bmi_seq increment by 1 start with 1;
+
+insert into bmi values (1, '준석', 80, 180, 24.00, '정상');
+
+select * from bmi;
+
+alter sequence message_id_seq nocache;
+
+drop table bmi cascade constraint purge;
+drop sequence bmi_seq;

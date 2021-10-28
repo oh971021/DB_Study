@@ -1,0 +1,12 @@
+create table BMI (
+	b_no number (20) primary key,
+	b_name varchar (20 char) not null,
+	b_weight number (20) not null,
+	b_height number (20) not null,
+	b_bmi number (20, 2) not null,
+	b_result varchar (20 char) not null
+);
+
+create sequence bmi_seq;
+
+drop table bmi cascade constraint purge;

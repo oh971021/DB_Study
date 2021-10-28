@@ -1,0 +1,24 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class BMIMain {
+	public static void main(String[] args) {
+		
+		String url = "";
+		String sql = "";
+		
+		// 껍데기 3녀석 만들기
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		
+		
+		
+		// 테이블 - 
+		// 번호, 이름, 체중, 키, BMI(소수점 2자리), 결과
+		
+		
+		
+	}
+}

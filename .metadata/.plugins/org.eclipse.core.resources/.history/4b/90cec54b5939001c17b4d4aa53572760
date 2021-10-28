@@ -1,0 +1,12 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class ConnectionMain {
+	public static void main(String[] args) {
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		
+	}
+}

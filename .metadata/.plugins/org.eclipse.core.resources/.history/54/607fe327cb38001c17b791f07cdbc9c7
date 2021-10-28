@@ -1,0 +1,19 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBMain {
+	public static void main(String[] args) throws SQLException {
+		
+		// DB 관련 작업
+		// 1순위 : DB 연결
+		// 껍데기 시리즈
+		// 뭘하든 CRUD
+		
+		// 연결	
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
+		System.out.println("연결 성공!");
+	}
+}

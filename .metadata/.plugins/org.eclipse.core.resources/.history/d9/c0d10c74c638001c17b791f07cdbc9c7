@@ -1,0 +1,11 @@
+
+public class DBMain {
+	public static void main(String[] args) {
+		
+		// DB 관련 작업
+		// 1순위 : DB 연결
+		// 껍데기 시리즈
+		// 뭘하든 CRUD
+		
+	}
+}
