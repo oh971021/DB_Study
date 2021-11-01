@@ -11,7 +11,7 @@ public class SelectMain {
 		Scanner k = new Scanner(System.in);
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String sql = "SELECT * FROM DB_TEST";
+		String sql = "SELECT * FROM DB_TEST ORDER BY D_NO";
 		
 		Connection con = DriverManager.getConnection(url, "c##ojs", "ojs");
 		System.out.println("연결 성공!");
@@ -30,10 +30,10 @@ public class SelectMain {
 		//				다음 데이터가 있으면 true, 없으면 false
 		while (rs.next()) {
 			// rs.getXXXX("컬럼") : 현재 화살표 위치의 컬럼 값 가지고오기.
-			System.out.println(rs.getInt("d_no"));
-			System.out.println(rs.getString("d_name"));
-			System.out.println(rs.getInt("d_age"));
-			System.out.println("=======");
+			System.out.print(rs.getInt("d_no") + "번 ");
+			System.out.print(rs.getString("d_name") + " ");
+			System.out.println(rs.getInt("d_age") + "살");
+			System.out.println("===========");
 		}
 		
 		rs.close();
