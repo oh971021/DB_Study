@@ -85,13 +85,8 @@ public class M {
 			
 			ArrayList<Person> p = new ArrayList<Person>();
 			
-			
 			while (rs.next()) {
-				String name = rs.getString("n_name");
-				System.out.println(name);
-				int age = rs.getInt("n_age");
-				System.out.println(age);
-				p.add(new Person(name, age));
+				p.add(new Person(rs.getString("n_name"), rs.getInt("n_age")));
 			}
 			
 			request.setAttribute("p", p);
@@ -104,7 +99,7 @@ public class M {
 				pstmt.close();
 				con.close();
 			} catch (Exception e2) {
-				// TODO: handle exception
+				e2.printStackTrace();
 			}
 		}
 	}	
