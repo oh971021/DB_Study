@@ -28,10 +28,9 @@ public class M {
 			String name = request.getParameter("n");
 			String age = request.getParameter("a");
 			
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String sql = "INSERT INTO NAMEAGE VALUES (?, ?)";
 			
-			con = DriverManager.getConnection(url, "c##ojs", "ojs");
+			con = DBManager.connect();
 			System.out.println("연결 성공!");
 			
 			// 데이터 생성
@@ -48,15 +47,10 @@ public class M {
 		
 		} catch (Exception e) {
 			request.setAttribute("r", "DB Server Error...");
-			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			try {
-				pstmt.close();
-				con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			// 쓰지 않은건 null 넣으면 된다.
+			DBManager.close(con, pstmt, null);
 		}
 		
 		
@@ -70,10 +64,9 @@ public class M {
 		
 		try {
 			
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String sql = "SELECT * FROM NAMEAGE";
 			
-			con = DriverManager.getConnection(url, "c##ojs", "ojs");
+			con = DBManager.connect();
 			System.out.println("연결 성공!");
 			
 			// 데이터 조회
@@ -94,13 +87,7 @@ public class M {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				rs.close();
-				pstmt.close();
-				con.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			DBManager.close(con, pstmt, rs);
 		}
 	}	
 }
