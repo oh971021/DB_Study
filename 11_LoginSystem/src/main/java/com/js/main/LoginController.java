@@ -11,16 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		AccountDAO.logout(request);
+		
+		AccountDAO.loginCheck(request);
+		request.setAttribute("contentPage", "home.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// ¿œ
+		AccountDAO.login(request); 
+		AccountDAO.loginCheck(request);
 		
-		
-		request.setAttribute("loginPage", "loginOK.jsp");
 		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+		
 	}
-
 }

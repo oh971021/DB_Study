@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	${sessionScope.accountInfo.name }님 반갑습니다
-	<button onclick="location.href='LoginController'">로그아웃</button>
-	
+	<h1>Menu 1 !!</h1>
 </body>
 </html>

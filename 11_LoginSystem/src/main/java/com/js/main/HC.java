@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setAttribute("loginPage", "login.jsp");
+		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
