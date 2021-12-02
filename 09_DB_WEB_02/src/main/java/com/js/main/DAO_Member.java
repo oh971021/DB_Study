@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import oracle.net.aso.m;
+
 // DAO( Data Access Object )
 // DB 관련 작업 정리하는 Model
 public class DAO_Member {
@@ -47,8 +49,40 @@ public class DAO_Member {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
+	}
+
+	public static String regMember(Member m) {
+
+		// 값 받기 : 모델에서 작업해놨음
+		// 껍데기 만들기
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		
+		try {
+			
+			con = DBManager.connect();
+			
+			String sql = "insert into member values(member_seq.nextval, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m.getName());
+			pstmt.setInt(2, m.getAge());
+			
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("등록 성공");
+				return "등록 성공";
+			} else {
+				return "등록 실패";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "DB 서버 문제";
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
 		
 	}
+	
+	
 	
 }

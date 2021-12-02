@@ -14,7 +14,9 @@ public class HC extends HttpServlet {
 		if (!request.getParameterNames().hasMoreElements()) {
 			request.getRequestDispatcher("index.html").forward(request, response);			
 		} else {
-			
+			// 등록하는 일 시키기
+			request.setAttribute("r", DAO_Member.regMember(M.getVal(request))); 
+			request.getRequestDispatcher("index.jsp").forward(request, response);			
 		}
 		
 		
