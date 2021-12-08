@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+#tbl_review {
+	border: black solid 2px;
+	width: 80%;
+	height: 60px;
+}
+
+#tbl_review2 {
+	border: black solid 1px;
+	width: 80%;
+	height: 150px;
+}
+
+#tbl_review3 {
+	border: black solid 1px;
+	width: 80%;
+	height: 20px;
+}
+
+#tbl_review3 a {
+	color: blue;
+}
+
+#tbl_review3 a:hover {
+	color: red;
+}
+
+.r_td1 {
+	padding-left: 30px;
+	font-size: 13pt;
+	width: 60%;
+}
+
+.r_td2 {
+	padding-left: 30px;
+	font-size: 10pt;
+}
+
+.r_td1:hover {
+	font-weight: 600;
+}
+
+.r_tr1:hover {
+	background-color: #fafdbb;
+	cursor: pointer;
+}
+
+.r_td_title {
+	font-size: 15pt;
+	padding-left: 30px;
+	border-bottom: black solid 2px;
+	height: 80px;
+}
+
+.r_td_title a {
+	color: blue;
+}
+
+#r_pageTd {
+	height: 20px;
+}
+
+#tbl_detail {
+	width: 600px;
+	height: 600px;
+}
+
+.d_td1 {
+	padding: 10px;
+	height: 50px;
+}
+
+.d_td2 {
+	padding: 10px;
+}
+
+.d_td3 {
+	padding: 10px;
+	border-top: black solid 1px;;
+	height: 50px;
+	text-align: right;
+}
+
+.d_td3 a {
+	color: blue;
+}
+
+button {
+	width: 70px;
+	height: 40px;
+	font-size: 10pt;
+	font-weight: 600;
+	color: white;
+	background-color: black;
+}
+
+#tbl_reg {
+	width: 600px;
+	height: 600px;
+}
+
+#tbl_reg td{
+	text-align: center;
+}

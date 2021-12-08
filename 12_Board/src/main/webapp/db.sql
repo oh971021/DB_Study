@@ -14,3 +14,21 @@ insert into movie_test values (movie_test_seq.nextval, '力格2', '硅快2', '荤柳2'
 select * from movie_test;
 
 delete from MOVIE_TEST where m_no = '28';
+
+create table review_test(
+	r_no number(3) primary key,
+	r_title varchar2(50 char) not null,
+	r_txt varchar2(200 char) not null,
+	r_date date not null
+);
+
+create sequence review_test_seq increment by 1;
+
+insert into review_test values(review_test_seq.nextval, '力格', '郴侩', sysdate);
+insert into review_test values(review_test_seq.nextval, '力格2', '郴侩2', sysdate);
+
+select * from review_test;
+
+delete from review_test where r_no = '5';
+
+drop sequence review_test_seq;

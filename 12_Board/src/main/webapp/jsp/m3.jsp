@@ -52,7 +52,7 @@
 			<tr>
 				<td>
 					<button onclick="location.href='MovieUpdateC?num=${m.no}&basicImg=${m.img }'">수정</button>
-					<button onclick="updateMovie('${m.title }', '${m.actor }', '${m.story }', '${m.no }')">수정 (JS)</button>
+					<button onclick="updateMovie('${m.title }', '${m.actor }', '${m.story }', '${m.no }')">수정(JS)</button>
 					<button onclick="deleteMovie(${m.no })">삭제</button>
 				</td>
 			</tr>
