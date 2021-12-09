@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+#bmitable {
+	border: 3px solid #00838f;
+	border-spacing: 0px;
+	padding: 15px;
+	width: 400px;
+	margin: 50px auto; 
+	background-color: #b2ebf2;
+	font-weight: bold;
+}
+/* 전체 테이블 CSS */
+
+#bmitable tr {
+	height: 60px;
+}
+#bmitable td {
+	color: black;
+}
+#bmititle {
+	text-align: center;
+	font-size: 20pt;
+	background-color: #00acc1;
+	border-radius: 40px 80px;
+}
+/* 제목 CSS */
+
+
+input {
+	width: 96%;
+	height: 30px;
+	text-align: center;
+}
+input[type=text] {
+	border: 1px solid #00acc1;
+	background: transparent;
+}
+/* 레이아웃 CSS */
+
+
+#button {
+	text-align: right;
+}
+button {
+	width: 30%;
+	height: 30px;
+	border: none;
+	background-color: #0097a7;
+	color: #fff;
+}
+/* 결과값 CSS */
