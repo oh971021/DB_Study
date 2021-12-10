@@ -187,4 +187,50 @@ public class ReviewDAO {
 		}
 		
 	}
+
+	public static void searchReview(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from review_test where r_title like '%'||?||'%'";
+		
+		try {
+			
+			String search = request.getParameter("search");
+			
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, search);
+			
+			rs = pstmt.executeQuery();
+
+			ArrayList<Review> reviews = new ArrayList<Review>();
+			
+			Review r = null;
+			
+			while (rs.next()) {
+				r = new Review();
+				
+				r.setNo(rs.getInt("r_no"));
+				r.setTitle(rs.getString("r_title"));
+				r.setTxt(rs.getString("r_txt"));
+				r.setDate(rs.getDate("r_date"));
+				
+				reviews.add(r);
+			}
+			
+			request.setAttribute("reviews", reviews);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "DB 연결 문제,,");
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+	}
 }

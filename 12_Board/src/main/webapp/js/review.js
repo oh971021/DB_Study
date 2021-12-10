@@ -9,3 +9,11 @@ function deleteReview(n) {
 		alert('실패요 ㅋㅋ');
 	}
 }
+
+function searchReview() {
+	
+	let serachInput = document.getElementById('search');
+	let serachVal = serachInput.value;
+	
+	location.href = 'ReviewSearchC?search=' + serachVal; 
+}

@@ -1,4 +1,4 @@
-package com.js.main;
+package com.js.m4;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/HC")
-public class HC extends HttpServlet {
+@WebServlet("/SearchReviewC")
+public class SearchReviewC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login.jsp");
-		request.setAttribute("contentPage", "home.jsp");
+		ReviewDAO.searchReview(request);
+		
+		request.setAttribute("contentPage", "jsp/m4.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

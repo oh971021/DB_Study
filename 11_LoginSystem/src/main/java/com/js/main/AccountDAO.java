@@ -71,7 +71,7 @@ public class AccountDAO {
 					// 세션에 어트리뷰트 정보를 넣어준다.
 					hs.setAttribute("accountInfo", a);
 					// 세션 만료 시간을 정해 줌
-					hs.setMaxInactiveInterval(10);					
+					hs.setMaxInactiveInterval(5);					
 					
 //					request.setAttribute("a", a);
 					
