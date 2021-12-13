@@ -11,7 +11,8 @@ ${r }
 	<form action="LoginController" method="post">
 		ID <input name="id"> <p>
 		PW <input name="pw"> <p>
-		<button>로그인</button>		
+		<button class="loginBtn">로그인</button>		
+		<button type="button" class="loginBtn" onclick="location.href='RegAccountC'">회원가입</button>
 	</form>
 </body>
 </html>

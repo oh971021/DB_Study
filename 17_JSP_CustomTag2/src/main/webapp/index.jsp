@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/unitMain.css">
 <link rel="stylesheet" href="css/bmiMain.css">
 <link rel="stylesheet" href="css/bmiResult.css">
+<link rel="stylesheet" href="css/reg.css">
 <script type="text/javascript" src="js/validCheck.js"></script>
 <script type="text/javascript" src="js/unitCheck.js"></script>
 <script type="text/javascript" src="js/bmiCheck.js"></script>
