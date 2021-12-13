@@ -1,0 +1,45 @@
+@charset "EUC-KR";
+
+body {
+	background-color: #fcf4de;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 5px 5px 5px black;
+	width: 400px;
+	height: 600px;
+	background-color: gray;
+	color: white;
+}
+#title{
+	font-size: 20pt;
+	font-weight: 900;
+}
+td{
+	text-align: center;
+}
+button {
+	width: 150px;
+	height: 40px;
+	font-size: 17pt;
+	color:black;
+	border-color: black;
+}
+textarea {
+	resize: none;
+	height: 100px;
+	width: 180px;
+	font-size: 13pt;
+	outline-color: black;
+}
+input {
+	padding: 5px;
+	border-radius: 3px;
+	text-align: center;
+}
+
+#namee{
+	color: purple;
+}
