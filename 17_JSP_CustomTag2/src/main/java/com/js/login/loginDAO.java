@@ -47,6 +47,7 @@ public class loginDAO {
 					// 유저 정보 뽑기
 					user.setName(rs.getString("a_name"));
 					user.setId(rs.getString("a_id"));  
+					user.setPw(rs.getString("a_pw"));  
 					user.setGender(rs.getString("a_gender"));
 					user.setAddr(rs.getString("a_addr"));
 					user.setInterest(rs.getString("a_interest"));
@@ -272,7 +273,7 @@ public class loginDAO {
 				 File f = new File(delFile);
 				 f.delete();
 			 }
-			 pstmt.setString(7, mr.getParameter("id"));
+//			 pstmt.setString(7, mr.getParameter("id"));
 			 
 			 // 하나의 인덱스가 잘 들어갔으면 ok
 			 if (pstmt.executeUpdate() == 1) {

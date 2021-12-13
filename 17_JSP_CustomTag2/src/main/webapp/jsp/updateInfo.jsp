@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="UpdateAccountC" method="post" enctype="multipart/form-data"> 
+	<form action="UpdateAccountC" method="post"
+		enctype="multipart/form-data">
 		<table id="regTbl">
 			<tr>
 				<td colspan="2" id="title">회원 수정</td>
@@ -23,8 +24,7 @@
 			</tr>
 			<tr>
 				<td class="regTd1">PW</td>
-				<td class="regTd2"><input name="pw2"
-					value="${sessionScope.userInfo.pw }" type="hidden"></td>
+				<td class="regTd2"><input name="pw2"><input name="pw" value="${sessionScope.userInfo.pw }" type="hidden"></td>
 			</tr>
 			<tr>
 				<td class="regTd1">성별</td>
@@ -41,28 +41,31 @@
 			</tr>
 			<tr>
 				<td class="regTd1">관심사</td>
-				<td class="regTd2">
-					요리<input type="checkbox" name="interest2" value="cook"> 
-					운동<input type="checkbox" name="interest2" value="excer">
-					게임<input type="checkbox" name="interest2" value="game"> 
-					개발<input type="checkbox" name="interest2" value="dev">
-					<input value="${sessionScope.userInfo.interest }" name="interest" type="hidden">
+				<td class="regTd2">요리<input type="checkbox" name="interest2"
+					value="cook"> 운동<input type="checkbox" name="interest2"
+					value="excer"> 게임<input type="checkbox" name="interest2"
+					value="game"> 개발<input type="checkbox" name="interest2"
+					value="dev"> <input
+					value="${sessionScope.userInfo.interest }" name="interest"
+					type="hidden">
 				</td>
-	
+
 			</tr>
 			<tr>
 				<td class="regTd1">자기소개</td>
-				<td class="regTd2"><textarea>${sessionScope.userInfo.introduce }</textarea></td>
+				<td class="regTd2"><textarea name="textArea">${sessionScope.userInfo.introduce }</textarea></td>
 			</tr>
 			<tr>
 				<td class="regTd1">프사</td>
-				<td class="regTd2"><input name="img" value="${sessionScope.userInfo.img }" type="hidden"> 
-					<input type="file" name="img2">
-					<img src="file/${sessionScope.userInfo.img }">
-				</td>
+				<td class="regTd2"><input name="img"
+					value="${sessionScope.userInfo.img }" type="hidden"> <input
+					type="file" name="img2"> <img
+					src="file/${sessionScope.userInfo.img }"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><button onclick="location.href='UpdateAccountC'" value="${sessionScope.userInfo.id }" name="id">수정</button></td>
+				<td colspan="2"><button
+						onclick="location.href='UpdateAccountC'"
+						value="${sessionScope.userInfo.id }" name="id">수정</button></td>
 			</tr>
 		</table>
 	</form>
