@@ -23,4 +23,6 @@ insert into ACCOUNT values('js', 'id', 'pw', '남', '주소', '관심사', '자기소개',
 
 select * from account;
 
+-- delete ACCOUNT where a_id = 'id';
+
 -- drop table account cascade constraint purge;

@@ -24,9 +24,19 @@ public class loginDAO {
 		
 		String sql = "select * from account where a_id = ?";
 		
-		// 유저 값 받기
+		// 유저 값 받기 (처음 로그인)
 		String userID = request.getParameter("id");
 		String userPW = request.getParameter("pw");
+		
+		// 수정한 유저 값 받기 (회원수정 후 로그인)
+		String idd = (String)request.getAttribute("idd");
+		String pww = (String)request.getAttribute("pww");
+		
+		// 만약 수정 값이 들어온다면 기존 유저 정보에 대입시켜서 로그인 작업을 시킨다.
+		if(idd != null) {
+			userID = idd;
+			userPW = pww;
+		}
 		
 		try {
 			
@@ -61,7 +71,7 @@ public class loginDAO {
 					// 세션에 user 정보 세팅
 					hs.setAttribute("userInfo", user);
 					// 세션 종료 시간 설정
-					hs.setMaxInactiveInterval(12);
+					hs.setMaxInactiveInterval(60*5);
 					
 					request.setAttribute("r", "로그인 성공!");
 				} else {
@@ -194,7 +204,7 @@ public class loginDAO {
 		Connection con = null;
 		 PreparedStatement pstmt = null;
 		 
-		 String sql = "update account set a_name=?, a_pw=?, a_addr=?, a_interest=?, a_introduce=?, a_img=?";
+		 String sql = "update account set a_name=?, a_pw=?, a_addr=?, a_interest=?, a_introduce=?, a_img=? where a_id=?";
 		 
 		 try {
 			 con = DBManager.connect();
@@ -273,12 +283,18 @@ public class loginDAO {
 				 File f = new File(delFile);
 				 f.delete();
 			 }
-//			 pstmt.setString(7, mr.getParameter("id"));
+			 pstmt.setString(7, mr.getParameter("id"));
+			 
+			 request.setAttribute("idd", mr.getParameter("id"));
+			 request.setAttribute("pww", pw3);
 			 
 			 // 하나의 인덱스가 잘 들어갔으면 ok
 			 if (pstmt.executeUpdate() == 1) {
 				 System.out.println("수정 성공!");
-				 request.setAttribute("r", "수정 성공!");
+				 request.setAttribute("r", "수정 성공!");	
+				 
+				 // 여기에다가 로그인 기능을 다시 사용해서 업데이트 시켜 줘도 됨
+				 
 			 } else {
 				 System.out.println("수정 실패!");
 				 request.setAttribute("r", "수정 실패!");
