@@ -14,8 +14,9 @@ public class MovieUpdateC extends HttpServlet {
 
 		if (request.getParameter("num") == null) {
 			// 일 해야지 이젠 (입력받은 내용이 있으면)
-			MovieDAO.updateMovie(request);
-			MovieDAO.getAllmovie(request);
+			MovieDAO.getMdao().updateMovie(request);
+			MovieDAO.getMdao().getAllmovie(request);
+			MovieDAO.getMdao().paging(1, request);
 			
 			request.setAttribute("contentPage", "jsp/m3.jsp");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -25,7 +26,7 @@ public class MovieUpdateC extends HttpServlet {
 			System.out.println(request.getParameter("basicImg"));
 			request.setAttribute("basicImg", request.getParameter("basicImg"));
 			
-			MovieDAO.getMovie(request);
+			MovieDAO.getMdao().getMovie(request);
 			
 			request.setAttribute("contentPage", "jsp/m3_detail.jsp");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -35,8 +36,9 @@ public class MovieUpdateC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		MovieDAO.updateMovie2(request);
-		MovieDAO.getAllmovie(request);
+		MovieDAO.getMdao().updateMovie2(request);
+		MovieDAO.getMdao().getAllmovie(request);
+		MovieDAO.getMdao().paging(1, request);
 		
 		request.setAttribute("contentPage", "jsp/m3.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

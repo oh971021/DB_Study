@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +15,29 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MovieDAO {
 
-	public static void getAllmovie(HttpServletRequest request) {
+	// static 다 붙어있을 때도 되고,
+	// 빼도 잘 되는데 왜?
+		// JVM이 자바를 번역할 때, 스테틱 메인을 기준으로 실행한다.
+		// 스테틱 없이 쓰는게 메모리부분도 좋다. 왜? 가비지컬렉터 때문에 힙에 쓰는게 나음
+		// 힙에 쓰려면 객체지향해야함.
+	
+	// 객체를 하나만 만들어서 쓰기 (싱글톤 패턴)	
+	private static final MovieDAO MDAO = new MovieDAO();
+	
+	private MovieDAO() {}
+	
+	// 다른 컨트롤러에서 객체를 만들때 게터를 이용해서 사용한다
+	public static MovieDAO getMdao() {
+		return MDAO;
+	}
+
+
+
+	// 필드영역
+		// 스테틱영역으로 하면 바로 사용 가능
+	private ArrayList<Movie> movies;
+	
+	public void getAllmovie(HttpServletRequest request) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -27,7 +50,7 @@ public class MovieDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 		
-			ArrayList<Movie> movies = new ArrayList<Movie>();
+			movies = new ArrayList<Movie>();
 			
 			Movie m = null;
 			
@@ -55,7 +78,7 @@ public class MovieDAO {
 		
 	}
 
-	public static void setMovie(HttpServletRequest request) throws IOException {
+	public void setMovie(HttpServletRequest request) throws IOException {
 		
 		String path = request.getSession().getServletContext().getRealPath("img");
 		System.out.println(path);
@@ -100,7 +123,7 @@ public class MovieDAO {
 		
 	}
 
-	public static void delMovie(HttpServletRequest request) {
+	public void delMovie(HttpServletRequest request) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -129,7 +152,7 @@ public class MovieDAO {
 		
 	}
 
-	public static void updateMovie(HttpServletRequest request) {
+	public void updateMovie(HttpServletRequest request) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -169,7 +192,7 @@ public class MovieDAO {
 				
 	}
 	
-	public static void getMovie(HttpServletRequest request) {
+	public void getMovie(HttpServletRequest request) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -208,7 +231,7 @@ public class MovieDAO {
 		
 	}
 
-	public static void updateMovie2(HttpServletRequest request) {
+	public void updateMovie2(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -262,4 +285,35 @@ public class MovieDAO {
 		}
 	}
 
+	public void paging(int page, HttpServletRequest request) {
+	
+		// page : 현재 페이지 번호
+		request.setAttribute("curPageNo", page);
+
+		int cnt = 3;	// 한 페이지당 보여줄 개수
+		// size = 배열 length
+		int total = movies.size();	// 전체 데이터 개수
+		
+		// 총 페이지 수 계산
+		int pageCount = (int)Math.ceil((double)total / cnt);
+		request.setAttribute("pageCount", pageCount);
+		
+		// 페이지의 시작 데이터 번호 계산
+		int start = total - (cnt * (page - 1));
+		
+		// 페이지의 끝 데이터 번호 계산
+		int end = (page == pageCount) ? -1 : start - (cnt + 1);
+		
+		ArrayList<Movie> items = new ArrayList<Movie>();
+		for (int i = start-1; i > end; i--) {
+			// movies를 인덱스번호에 맞춰서 가지고 온다
+				// movies = 모든 데이터가 들어있는 배열
+			items.add(movies.get(i));
+		}
+		
+		// 페이지 번호에 맞는 데이터량을 보내준다.
+		request.setAttribute("movies", items);
+		
+	}
+	
 }
