@@ -12,20 +12,12 @@
 
 	<table>
 		<tr>
-			<td align="center" style="font-size: 50pt; width: 50px;">
-				<c:choose>
-					<c:when test="${curPageNo == 1 }">&lt;</c:when>
-					<c:otherwise>
-						<a href="MoviePageController?p=${curPageNo - 1}">&lt;</a>
-					</c:otherwise>
-				</c:choose>
-			</td>
-<%-- 			<td align="center" style="font-size: 50pt; width: 50px;">
+			<%-- 			<td align="center" style="font-size: 50pt; width: 50px;">
 				<c:if test="${curPageNo != 1 }">
 					<a href="MoviePageController?p=${curPageNo - 1}">&lt;</a>
 				</c:if>
 			</td> --%>
-			<td>
+			<td colspan="5">
 				<form action="Menu3" method="post" enctype="multipart/form-data">
 					<table id="mTbl">
 						<tr>
@@ -81,14 +73,46 @@
 					</table>
 				</c:forEach>
 			</td>
-			<td align="center" style="font-size: 50pt; width: 50px;">
+
+		</tr>
+		<tr>
+
+			<td align="center" style="font-size: 50pt; width: 50px;"><c:choose>
+					<c:when test="${curPageNo == 1 }">&lt;</c:when>
+					<c:otherwise>
+						<a href="MoviePageController?p=${curPageNo - 1}">&lt;</a>
+					</c:otherwise>
+				</c:choose></td>
+
+			<td align="center">
 				<c:choose>
+					<c:when test="${curPageNo == 1 }">[맨앞]</c:when>
+					<c:otherwise>
+						<a href="MoviePageController?p=1">[맨앞]</a>
+					</c:otherwise>
+				</c:choose>
+			</td>
+			<td align="center">
+				<c:forEach var="p" begin="1" end="${pageCount }">
+					<!-- 페이지 카운터를 누르면 해당 페이지로 이동함 -->
+					<a href="MoviePageController?p=${p }">[${p }]</a>
+				</c:forEach>
+			</td>
+			<td align="center">
+				<c:choose>
+					<c:when test="${curPageNo == pageCount }">[맨뒤]</c:when>
+					<c:otherwise>
+						<a href="MoviePageController?p=${pageCount }">[맨뒤]</a>
+					</c:otherwise>
+				</c:choose>
+			</td>
+
+			<td align="center" style="font-size: 50pt; width: 50px;"><c:choose>
 					<c:when test="${curPageNo == pageCount }">&gt;</c:when>
 					<c:otherwise>
 						<a href="MoviePageController?p=${curPageNo + 1}">&gt;</a>
 					</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 	</table>
 
