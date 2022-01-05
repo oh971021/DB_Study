@@ -13,7 +13,7 @@ public class ReviewUpdateC extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 일시키기 ( 넘버를 가지고 있으니까 거기에 해당 된 값들을 가져오기 )
-		ReviewDAO.getReview(request);
+		ReviewDAO.getRdao().getReview(request);
 		
 		request.setAttribute("contentPage", "jsp/m4_update.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -23,8 +23,8 @@ public class ReviewUpdateC extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// 일 시키기 (update)
-		ReviewDAO.updateReview(request);
-		ReviewDAO.getAllReivew(request);
+		ReviewDAO.getRdao().updateReview(request);
+		ReviewDAO.getRdao().getAllReivew(request);
 		
 		// 목록으로 돌아가기
 		request.setAttribute("contentPage", "jsp/m4.jsp");

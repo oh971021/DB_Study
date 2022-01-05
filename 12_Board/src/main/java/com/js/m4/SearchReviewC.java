@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SearchReviewC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ReviewDAO.searchReview(request);
+		ReviewDAO.getRdao().searchReview(request);
 		
 		request.setAttribute("contentPage", "jsp/m4.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

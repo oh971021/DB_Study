@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public class DeleteReviewC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ReviewDAO.deleteReview(request);
-		ReviewDAO.getAllReivew(request);
+		ReviewDAO.getRdao().deleteReview(request);
+		ReviewDAO.getRdao().getAllReivew(request);
+		ReviewDAO.getRdao().paging(1, request);
 		
 		request.setAttribute("contentPage", "jsp/m4.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

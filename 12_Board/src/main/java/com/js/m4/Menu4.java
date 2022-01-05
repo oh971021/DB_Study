@@ -12,7 +12,8 @@ public class Menu4 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// ÀÏ Á¶È÷ (select)
-		ReviewDAO.getAllReivew(request);
+		ReviewDAO.getRdao().getAllReivew(request);
+		ReviewDAO.getRdao().paging(1, request);
 		
 		request.setAttribute("contentPage", "jsp/m4.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

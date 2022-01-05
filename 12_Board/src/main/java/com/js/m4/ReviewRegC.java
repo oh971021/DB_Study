@@ -18,8 +18,8 @@ public class ReviewRegC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 등록 및 조회 일시키기
-		ReviewDAO.regReview(request);
-		ReviewDAO.getAllReivew(request);
+		ReviewDAO.getRdao().regReview(request);
+		ReviewDAO.getRdao().getAllReivew(request);
 		
 		request.setAttribute("contentPage", "jsp/m4.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

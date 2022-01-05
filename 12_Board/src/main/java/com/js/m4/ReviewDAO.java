@@ -7,11 +7,26 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.js.m3.Movie;
 import com.js.main.DBManager;
 
 public class ReviewDAO {
 
-	public static void getAllReivew(HttpServletRequest request) {
+	// 리뷰들이 들어있는 배열
+	private ArrayList<Review> reviews;
+	
+	private static final ReviewDAO RDAO = new ReviewDAO();
+	
+	private ReviewDAO() {
+		
+	};
+		
+	public static ReviewDAO getRdao() {
+		return RDAO;
+	}
+	// ------- 싱글톤 패턴 -------- //
+
+	public void getAllReivew(HttpServletRequest request) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -24,7 +39,7 @@ public class ReviewDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			ArrayList<Review> reviews = new ArrayList<Review>(); 
+			reviews = new ArrayList<Review>(); 
 			
 			Review r = null;
 			
@@ -46,7 +61,7 @@ public class ReviewDAO {
 		}
 	}
 
-	public static void regReview(HttpServletRequest request) {
+	public void regReview(HttpServletRequest request) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -81,7 +96,7 @@ public class ReviewDAO {
 		
 	}
 
-	public static void getReview(HttpServletRequest request) {
+	public void getReview(HttpServletRequest request) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -119,7 +134,7 @@ public class ReviewDAO {
 		
 	}
 
-	public static void updateReview(HttpServletRequest request) {
+	public void updateReview(HttpServletRequest request) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -159,7 +174,7 @@ public class ReviewDAO {
 		
 	}
 
-	public static void deleteReview(HttpServletRequest request) {
+	public void deleteReview(HttpServletRequest request) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -188,7 +203,7 @@ public class ReviewDAO {
 		
 	}
 
-	public static void searchReview(HttpServletRequest request) {
+	public void searchReview(HttpServletRequest request) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -231,6 +246,37 @@ public class ReviewDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
+		
+	}
+	
+	public void paging(int page, HttpServletRequest request) {
+		
+		// page : 현재 페이지 번호
+		request.setAttribute("curPageNo", page);
+
+		int cnt = 3;	// 한 페이지당 보여줄 개수
+		// size = 배열 length
+		int total = reviews.size();	// 전체 데이터 개수
+		
+		// 총 페이지 수 계산
+		int pageCount = (int)Math.ceil((double)total / cnt);
+		request.setAttribute("pageCount", pageCount);
+		
+		// 페이지의 시작 데이터 번호 계산
+		int start = total - (cnt * (page - 1));
+		
+		// 페이지의 끝 데이터 번호 계산
+		int end = (page == pageCount) ? -1 : start - (cnt + 1);
+		
+		ArrayList<Review> items = new ArrayList<Review>();
+		for (int i = start-1; i > end; i--) {
+			// movies를 인덱스번호에 맞춰서 가지고 온다
+				// movies = 모든 데이터가 들어있는 배열
+			items.add(reviews.get(i));
+		}
+		
+		// 페이지 번호에 맞는 데이터량을 보내준다.
+		request.setAttribute("reviews", items);
 		
 	}
 }

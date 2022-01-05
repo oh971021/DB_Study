@@ -30,6 +30,17 @@
 		</c:forEach>
 	</table>
 
+	<table id="tbl_review3">
+		<tr>
+			<td id="r_pageTd" align="center">
+				<c:forEach var="p" begin="1" end="${pageCount }">
+					<!-- 페이지 카운터를 누르면 해당 페이지로 이동함 -->
+					<a href="ReviewPageController?p=${p }">[${p }]</a>
+				</c:forEach>
+			</td>
+		</tr>
+	</table>
+
 	<form action="SearchReviewC">
 		<table style="width: 300px; height: 60px;">
 			<tr>
