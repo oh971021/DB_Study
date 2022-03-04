@@ -32,7 +32,7 @@ public class ReviewDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from review_test order by r_no desc";
+		String sql = "select * from review_test order by r_no";
 		
 		try {
 			con = DBManager.connect();
@@ -254,7 +254,7 @@ public class ReviewDAO {
 		// page : 현재 페이지 번호
 		request.setAttribute("curPageNo", page);
 
-		int cnt = 3;	// 한 페이지당 보여줄 개수
+		int cnt = 10;	// 한 페이지당 보여줄 개수
 		// size = 배열 length
 		int total = reviews.size();	// 전체 데이터 개수
 		

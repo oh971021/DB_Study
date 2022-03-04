@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ReviewPageController")
 public class ReviewPageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		// 파라미터로 보내진 페이지 번호를 받아서
 		int p = Integer.parseInt(request.getParameter("p"));
 		
