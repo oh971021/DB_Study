@@ -1,1 +1,1 @@
-# DB Stydu
+# DB Study
