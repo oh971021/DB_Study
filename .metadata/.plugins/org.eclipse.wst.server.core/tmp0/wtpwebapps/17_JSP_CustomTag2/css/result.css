@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+* { margin: 0; padding: 0; }
+
+#wrap { 
+	width: 500px;
+ 	margin: 50px auto 0 auto;
+ 	text-align: center;
+ 	border: 2px solid black;
+}
+
+#resultTable {
+	width: 100%;
+	border: 1px solid white;
+}
+
+.c1 { color: red; }
+.c2 { color: blue; }
+.c3 { color: green; }
+.c4 { color: gray; }
+
+#resultTable tr {
+	width: 100%;
+	height: 100px;
+}

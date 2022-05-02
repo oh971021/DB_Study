@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+* { margin: 0; padding: 0; }
+
+#wrap { 
+	width: 500px;
+ 	margin: 50px auto 0 auto;
+ 	text-align: center;
+ 	border: 2px solid black;
+}
+
+#unitTable {
+	width: 100%;
+	border: 1px solid white;
+}
+
+#unitTable tr {
+	width: 100%;
+	height: 70px;
+}
+
+.header {
+	background-color: Yellow;
+}
+
+#unitButton {
+	width: 30%;
+	height: 60px;
+	margin: 20px;
+	background-color: ivory;
+	border: 1 dotted black;
+}
+
+.unitInput input {
+	width: 60%;
+	height: 60px;
+	text-align: center;
+	font-size: 20pt;
+}
+
+.unitSelect {
+	width: 60%;
+	height: 50px;
+	text-align: center;
+	font-size: 15pt;
+}

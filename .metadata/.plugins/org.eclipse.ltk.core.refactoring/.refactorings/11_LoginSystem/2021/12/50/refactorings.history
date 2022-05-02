@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;DBManager.java&apos; to &apos;12_Board/src/main/java/com.js.main&apos;&#x0D;&#x0A;- Original project: &apos;11_LoginSystem&apos;&#x0D;&#x0A;- Destination element: &apos;12_Board/src/main/java/com.js.main&apos;&#x0D;&#x0A;- Original element: &apos;com.js.main.DBManager.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=12_Board/src\/main\/java&lt;com.js.main" element1="/src\/main\/java&lt;com.js.main{DBManager.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1638754784515" units="1" version="1.0"/>
+</session>

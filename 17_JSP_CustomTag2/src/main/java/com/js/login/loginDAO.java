@@ -323,4 +323,39 @@ public class loginDAO {
 		return 0;
 	}
 
+	public static void deleteAccount(HttpServletRequest request) {
+
+		Connection con = null;
+		 PreparedStatement pstmt = null;
+		 
+		 String sql = "delete account where a_id=?";
+		 
+		 try {
+			 con = DBManager.connect();
+			 pstmt = con.prepareStatement(sql);
+
+			 // ÆÄ¶ó¹ÌÅÍ °ª Ã³¸®
+			 String id = request.getParameter("id");
+			 pstmt.setString(1, id);
+
+			 // ¼¼¼Ç °ª ºÒ·¯¿Í¼­ Ã³¸®ÇØµµ µÊ
+			 
+			 // ÇÏ³ªÀÇ ÀÎµ¦½º°¡ Àß µé¾î°¬À¸¸é ok
+			 if (pstmt.executeUpdate() == 1) {
+				 System.out.println("Å»Åð ¼º°ø!");
+				 request.setAttribute("r", "Å»Åð ¼º°ø!");
+			 } else {
+				 System.out.println("Å»Åð ½ÇÆÐ!");
+				 request.setAttribute("r", "Å»Åð ½ÇÆÐ!");
+			 }
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "DB ¼­¹ö ¿À·ù..");
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
 }
